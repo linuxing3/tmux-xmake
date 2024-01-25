@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-commands=$(echo "install build run project clean config create test" | tr ' ' '\n')
+commands=$(echo "build run test clean" | tr ' ' '\n')
 selected=$(printf "$commands" | fzf)
 
 #
@@ -26,7 +26,7 @@ selected=$(printf "$commands" | fzf)
 function read_query() {
 	local query_message=$1
 
-	read -p -r "$query_message: " query
+	read -p "$query_message: " query
 
 	if [[ -z $query ]]; then
 		exit
@@ -34,6 +34,8 @@ function read_query() {
 
 	return query
 }
+
+cd $1 || exit
 
 # Exit if nothing selected
 if [[ -z $selected ]]; then
