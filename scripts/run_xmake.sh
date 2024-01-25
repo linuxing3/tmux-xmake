@@ -45,21 +45,21 @@ if [[ -z $selected ]]; then
 # Create new crate
 elif [ $selected = "project" ]; then
     query=$(read_query "Project")
-    cargo $selected $query
+    xmake $selected $query
 
 # Create new crate
 elif [ $selected = "install" ]; then
     query=$(read_query "Install")
-    cargo $selected $query
+    xmake $selected $query
 
 # Create new crate
 elif [ $selected = "config" ]; then
     query=$(read_query "Config")
-    cargo $selected $query
+    xmake $selected $query
 
 # Just run selected command
 else
-    cargo $selected
+    xmake $selected
 fi
 
 echo
