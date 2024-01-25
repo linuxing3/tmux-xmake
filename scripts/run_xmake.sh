@@ -42,20 +42,25 @@ cd $1
 if [[ -z $selected ]]; then
     exit
 
-# Create new crate
+# configure project
 elif [ $selected = "project" ]; then
     query=$(read_query "Project")
     xmake $selected $query
 
-# Create new crate
+# install package
 elif [ $selected = "install" ]; then
     query=$(read_query "Install")
     xmake $selected $query
 
-# Create new crate
+# change config
 elif [ $selected = "config" ]; then
     query=$(read_query "Config")
     xmake $selected $query
+
+# create new project
+elif [ $selected = "create" ]; then
+    query=$(read_query "Create")
+    xmake $selected -y -l c++ -t tbox.console $query
 
 # Just run selected command
 else
